@@ -1,0 +1,47 @@
+<html lang="en">
+    <body>
+
+        {% include 'base.html' %}
+        {% block content %}
+
+        <h1>Show data</h1>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th> ID </th>
+                    <th> Name </th>
+                    <th> Email </th>
+                    <th> Contact </th>
+                    <th>Photo</th>
+                    <th> EDIT </th>
+                    <th> DELETE </th>
+                     
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in ddata %}
+                <tr>
+                    <td>{{i.id}}</td>
+                    <td>{{i.Name}}</td>
+                    <td>{{i.Email}}</td>
+                    <td>{{i.Contact}}</td>
+                    <td>{{i.Photo}}</td>
+                    <td><button><a href="{% url 'edit' pk=i.id%}">Edit</a></button></td>                    
+                    <td><button><a href="{% url 'delete' pk=i.id%}">Delete</a></button></td>                    
+
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+            
+
+
+
+        </table>
+        <a href="{% url 'home' %}">Insert Data</a>
+    
+    {% endblock %}
+    </body>
+
+</html>
